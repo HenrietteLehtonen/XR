@@ -77,7 +77,7 @@ async function init() {
 
   marker = new THREE.Mesh(
     new THREE.CircleGeometry(0.25, 32).rotateX(-Math.PI / 2),
-    new THREE.MeshBasicMaterial({ color: 0x808080 })
+    new THREE.MeshBasicMaterial({ color: 0xff00ff })
   );
   scene.add(marker);
 
@@ -104,12 +104,14 @@ async function init() {
     maa.receiveShadow = true;
 
     await initPhysics(maa);
+    teleportgroup.add(maa);
 
     await renderer.compileAsync(scene, camera);
   });
   // haudat, puut jne
   loader.load("objects.glb", async function (gltf) {
     const objects = gltf.scene;
+    await renderer.compileAsync(objects, camera, scene);
 
     console.log("Objects loaded: ", objects);
     group.add(objects);
@@ -120,8 +122,6 @@ async function init() {
       objects.getObjectByProperty("isMesh", true);
     console.log("Lankut: ", lankut);
     teleportgroup.add(lankut);
-
-    await renderer.compileAsync(objects, camera, scene);
   });
 
   // const floorGeo = new THREE.BoxGeometry(10, 0.2, 10);
@@ -144,11 +144,11 @@ async function init() {
   renderer.setAnimationLoop(animate);
 }
 
-async function initPhysics(maa) {
+async function initPhysics(floor) {
   physics = await RapierPhysics();
   physics.addScene(scene);
 
-  physics.addMesh(maa, 0); // static
+  physics.addMesh(floor, 0); // static
 
   const SPAWN_RANGE = 8; // width of the square in world units
 
