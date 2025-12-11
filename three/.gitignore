@@ -1,4 +1,6 @@
 .node_modules
+.three-dist
+.gltf-dist
 
 # Logs
 logs

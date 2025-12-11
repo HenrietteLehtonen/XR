@@ -1,4 +1,6 @@
 .node_modules
+.vr-dist
+.gltf-dist
 
 # Logs
 logs

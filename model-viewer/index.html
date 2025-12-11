@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>&lt;model-viewer&gt; template</title>
+    <meta charset="utf-8" />
+    <meta name="description" content="&lt;model-viewer&gt; template" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link type="text/css" href="./styles.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- <model-viewer> HTML element -->
+    <model-viewer
+      id="ufo"
+      src="ufo_alien.gltf"
+      autoplay
+      ar
+      ar-modes="webxr scene-viewer quick-look"
+      camera-controls
+      tone-mapping="neutral"
+      poster="poster.webp"
+      shadow-intensity="1"
+      skybox-image="qwantani_night_1k.jpg"
+    >
+      <div class="controls glass">
+        <div>
+          Variant:
+          <select id="variant"></select>
+        </div>
+      </div>
+      <button
+        class="Hotspot"
+        slot="hotspot-2"
+        data-surface="0 0 126 131 132 0.190 0.687 0.123"
+        data-visibility-attribute="visible"
+      >
+        <div class="HotspotAnnotation">Ohjaamo</div></button
+      ><button
+        class="Hotspot"
+        slot="hotspot-5"
+        data-surface="0 4 18 10 2 0.338 0.107 0.555"
+        data-visibility-attribute="visible"
+      >
+        <div class="HotspotAnnotation">Lehmut tänne</div>
+      </button>
+      <div class="progress-bar hide" slot="progress-bar">
+        <div class="update-bar"></div>
+      </div>
+      <button slot="ar-button" id="ar-button">View in your space</button>
+      <div id="ar-prompt">
+        <img src="ar_hand_prompt.png" />
+      </div>
+    </model-viewer>
+    <script src="script.js"></script>
+    <!-- Loads <model-viewer> for browsers: -->
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"
+    ></script>
+    <script></script>
+  </body>
+</html>
